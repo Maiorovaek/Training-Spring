@@ -1,0 +1,31 @@
+//если бы мы собирали WAR-файл, общепризнанный формат,
+// ассоциирующийся с упаковкой сторонних зависимостей,
+// мы бы могли использовать WAR плагин.
+
+// Если вы используете Spring Boot и хотите получить исполняемый JAR-файл,
+// тогда вам пригодится spring-boot-gradle-plugin.
+
+apply plugin: 'java'
+
+apply plugin: 'application'
+
+mainClassName = 'hello.HelloWorld'
+//источники сторонних библиотек:
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+//прием сторонних библиотек (compile устарело  -> сейчас implementation)
+dependencies {
+    implementation 'joda-time:joda-time:2.12.0'
+}
+
+//назначим имя для нашего JAR артефакта.
+jar {
+    baseName = 'gs-gradle'
+    version =  '0.1.0'
+}
+
+
+
+
